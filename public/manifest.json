@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Extension Switch",
+  "short_name": "Extension Switch",
+  "description": "Provides a switch to toggle statuses of installed extensions.",
+  "version": "2.0.0",
+  "icons": {
+    "19": "images/icon19.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "64": "images/icon64.png",
+    "128": "images/icon128.png"
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
+  "permissions": [
+    "management",
+    "storage"
+  ],
+  "action": {
+    "default_icon": {
+      "19": "images/icon19.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "64": "images/icon64.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "Click to switch extensions",
+    "default_popup": "popup.html"
+  }
+}
