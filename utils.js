@@ -1,10 +1,10 @@
 /**
  * Get extentions.
  */
-export async function get_extensions() {
-  const excluded_ids = await get_excluded_extention_ids();
+export async function getExtensions() {
+  const excluded_ids = await getExcludedExtensionIds();
 
-  return (await get_all_extensions()).filter(is_target);
+  return (await getAllExtensions()).filter(is_target);
 
   // Check if the app is a target.
   function is_target(app) {
@@ -15,10 +15,10 @@ export async function get_extensions() {
 /**
  * Get all extensions.
  */
-export async function get_all_extensions() {
+export async function getAllExtensions() {
   const own_id = chrome.runtime.id;
 
-  return (await get_apps()).filter(is_target).sort(compare_name);
+  return (await getApps()).filter(is_target).sort(compare_name);
 
   // Check if the app is a target.
   function is_target(app) {
@@ -40,16 +40,16 @@ export async function get_all_extensions() {
 /**
  * Get the excluded extension ids.
  */
-export async function get_excluded_extention_ids() {
+export async function getExcludedExtensionIds() {
   const KEY = "extensionsExcluded";
-  const result = await get_storage(KEY);
+  const result = await getStorage(KEY);
   return result[KEY] || [];
 }
 
 /**
  * Get the apps using the Chrome API.
  */
-async function get_apps() {
+async function getApps() {
   return new Promise((resolve) => {
     chrome.management.getAll((apps) => {
       resolve(apps);
@@ -60,7 +60,7 @@ async function get_apps() {
 /**
  * Get a storage value.
  */
-async function get_storage(key) {
+async function getStorage(key) {
   return new Promise((resolve) => {
     chrome.storage.sync.get(key, (result) => {
       resolve(result);
@@ -71,7 +71,7 @@ async function get_storage(key) {
 /**
  * Get an extension info.
  */
-async function get_extension(id) {
+async function getExtension(id) {
   return new Promise((resolve) => {
     chrome.management.get(id, (app) => {
       resolve(app);
@@ -82,7 +82,7 @@ async function get_extension(id) {
 /**
  * Switch the state of an extension.
  */
-export async function switch_extension(app) {
+export async function switchExtension(app) {
   return new Promise((resolve) => {
     chrome.management.setEnabled(app.id, !app.enabled, () => {
       resolve();
@@ -93,7 +93,7 @@ export async function switch_extension(app) {
 /**
  * Switch the excluded setting of an extension.
  */
-export async function switch_excluded_status(id, excludedIds) {
+export async function switchExcludedStatus(id, excludedIds) {
   return new Promise((resolve) => {
     const index = excludedIds.indexOf(id);
 
@@ -115,7 +115,7 @@ export async function switch_excluded_status(id, excludedIds) {
 /**
  * Get the extension icon url.
  */
-export function get_icon_url(extension) {
+export function getIconUrl(extension) {
   const icons = extension.icons;
 
   if (icons.length > 0) {
@@ -129,7 +129,7 @@ export function get_icon_url(extension) {
 /**
  * Get the extension name for display.
  */
-export function get_name_display(extension, max) {
+export function getNameDisplay(extension, max) {
   let name = extension.name;
   return name.length > max ? name.slice(0, max) + "..." : name;
 }

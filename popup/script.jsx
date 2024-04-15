@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 
 import "./style.css";
 import {
-  get_extensions,
-  switch_extension,
-  get_icon_url,
-  get_name_display,
+  getExtensions,
+  switchExtension,
+  getIconUrl,
+  getNameDisplay,
 } from "../utils.js";
 
 const NAME_MAX_SIZE = 30;
@@ -18,12 +18,12 @@ const App = () => {
   const extensionsDisabled = extensions.filter((e) => !e.enabled);
 
   const refresh = async () => {
-    setExtensions(await get_extensions());
+    setExtensions(await getExtensions());
   };
 
   const handleClick = (extension) => {
     return async (_event) => {
-      await switch_extension(extension);
+      await switchExtension(extension);
       await refresh();
     };
   };
@@ -80,8 +80,8 @@ const App = () => {
 };
 
 const Item = ({ extension, onClick }) => {
-  const url = get_icon_url(extension);
-  const name = get_name_display(extension, NAME_MAX_SIZE);
+  const url = getIconUrl(extension);
+  const name = getNameDisplay(extension, NAME_MAX_SIZE);
 
   return (
     <a key={extension.name} onClick={onClick} className="extension">

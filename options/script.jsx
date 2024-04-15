@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 
 import "./style.css";
 import {
-  get_all_extensions,
-  get_icon_url,
-  get_name_display,
-  get_excluded_extention_ids,
-  switch_excluded_status,
+  getAllExtensions,
+  getIconUrl,
+  getNameDisplay,
+  getExcludedExtensionIds,
+  switchExcludedStatus,
 } from "../utils.js";
 
 const NAME_MAX_SIZE = 30;
@@ -18,14 +18,14 @@ const App = () => {
 
   const refresh = async () => {
     await Promise.all([
-      (async () => setExtensions(await get_all_extensions()))(),
-      (async () => setExcludedIds(await get_excluded_extention_ids()))(),
+      (async () => setExtensions(await getAllExtensions()))(),
+      (async () => setExcludedIds(await getExcludedExtensionIds()))(),
     ]);
   };
 
   const handleClick = (extension, excludedIds) => {
     return async (_event) => {
-      await switch_excluded_status(extension.id, excludedIds);
+      await switchExcludedStatus(extension.id, excludedIds);
       await refresh();
     };
   };
@@ -54,8 +54,8 @@ const App = () => {
 };
 
 const Item = ({ extension, excluded, onClick }) => {
-  const url = get_icon_url(extension);
-  const name = get_name_display(extension, NAME_MAX_SIZE);
+  const url = getIconUrl(extension);
+  const name = getNameDisplay(extension, NAME_MAX_SIZE);
 
   return (
     <label key={extension.name} className="extension">
