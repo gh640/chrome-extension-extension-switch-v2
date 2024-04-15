@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 
-import "./popup.css";
+import "./style.css";
 import {
   get_extensions,
   switch_extension,
   get_icon_url,
   get_name_display,
-} from "./utils.js";
+} from "../utils.js";
 
 const NAME_MAX_SIZE = 30;
 

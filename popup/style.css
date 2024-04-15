@@ -17,6 +17,7 @@ body {
   min-width: 240px;
   padding: 4px;
 }
+
 .section {
   margin: 0 0 1em;
 }
@@ -28,6 +29,7 @@ body {
   padding: 4px;
   width: 100%;
 }
+
 .heading {
   margin-block-start: 0;
   margin-block-end: 0;
@@ -35,10 +37,7 @@ body {
   font-size: 1rem;
 }
 
-.extensions {
-  margin-block-start: 0;
-  padding: 0;
-}
+.extensions {}
 
 .extension {
   margin: 1px 0;
