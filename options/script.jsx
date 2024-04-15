@@ -5,12 +5,9 @@ import "./style.css";
 import {
   getAllExtensions,
   getIconUrl,
-  getNameDisplay,
   getExcludedExtensionIds,
   switchExcludedStatus,
 } from "../utils.js";
-
-const NAME_MAX_SIZE = 30;
 
 const App = () => {
   let [extensions, setExtensions] = useState([]);
@@ -37,10 +34,10 @@ const App = () => {
   return (
     <div>
       <h1 class="heading">Excluded extensions</h1>
-      <div class="description">
+      <p class="description">
         Extensions checked here are excluded from the list of switches.
-      </div>
-      <div>
+      </p>
+      <div class="extensions">
         {extensions.map((e) => (
           <Item
             extension={e}
@@ -55,15 +52,15 @@ const App = () => {
 
 const Item = ({ extension, excluded, onClick }) => {
   const url = getIconUrl(extension);
-  const name = getNameDisplay(extension, NAME_MAX_SIZE);
+  const { name } = extension
 
   return (
-    <label key={extension.name} className="extension">
+    <label key={name} className="extension">
       <input type="checkbox" checked={excluded} onClick={onClick} />
       {url ? (
         <img
           src={url}
-          alt={extension.name}
+          alt={name}
           width="14"
           height="14"
           className="extension-image"

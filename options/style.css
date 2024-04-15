@@ -1,8 +1,9 @@
 :root {
-  line-height: 1.5;
-  font-weight: 400;
+  --color-text-base: #eee;
+  --color-bg-body: #333;
+  --color-border: #999;
 
-  color-scheme: light dark;
+  font-weight: 400;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -10,27 +11,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: light) {
-
+body {
+  color: var(--color-text-base);
+  background-color: var(--color-bg-body);
 }
 
 .heading {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  padding: 0.2em 0;
-  font-size: 1rem;
+  padding: 0.5em 0;
+  font-size: 120%;
 }
 
 .extension {
   margin: 1px 0;
-  padding: 4px 2px;
+  padding: 6px 0;
 
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 
   border-radius: 1px;
   text-overflow: ellipsis;

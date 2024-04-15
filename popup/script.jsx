@@ -64,14 +64,14 @@ const App = () => {
 
       <section className="section">
         <h1 className="heading">Enabled</h1>
-        <div className="extensions-enabled">
+        <div className="extensions extensions-enabled">
           <Items extensions={extensionsEnabled} />
         </div>
       </section>
 
       <section className="section">
         <h1 className="heading">Disabled</h1>
-        <div className="extensions-disabled">
+        <div className="extensions extensions-disabled">
           <Items extensions={extensionsDisabled} />
         </div>
       </section>
@@ -84,7 +84,7 @@ const Item = ({ extension, onClick }) => {
   const name = getNameDisplay(extension, NAME_MAX_SIZE);
 
   return (
-    <a key={extension.name} onClick={onClick} className="extension">
+    <button key={extension.name} onClick={onClick} className="extension">
       {url ? (
         <img
           src={url}
@@ -95,7 +95,7 @@ const Item = ({ extension, onClick }) => {
         />
       ) : null}
       <span>{name}</span>
-    </a>
+    </button>
   );
 };
 
