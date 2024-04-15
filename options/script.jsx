@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import "./style.css";
 import {
-  get_extensions,
+  get_all_extensions,
   get_icon_url,
   get_name_display,
   get_excluded_extention_ids,
@@ -17,7 +17,7 @@ const App = () => {
   let [excludedIds, setExcludedIds] = useState([]);
 
   const refresh = async () => {
-    setExtensions(await get_extensions(true));
+    setExtensions(await get_all_extensions());
     setExcludedIds(await get_excluded_extention_ids());
   };
 
