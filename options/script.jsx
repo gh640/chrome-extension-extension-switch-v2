@@ -17,8 +17,10 @@ const App = () => {
   let [excludedIds, setExcludedIds] = useState([]);
 
   const refresh = async () => {
-    setExtensions(await get_all_extensions());
-    setExcludedIds(await get_excluded_extention_ids());
+    await Promise.all([
+      (async () => setExtensions(await get_all_extensions()))(),
+      (async () => setExcludedIds(await get_excluded_extention_ids()))(),
+    ]);
   };
 
   const handleClick = (extension, excludedIds) => {
