@@ -12,6 +12,7 @@ import {
 const NAME_MAX_SIZE = 30;
 
 const App = () => {
+  let [searchWords, setSearchWords] = useState("");
   let [extensions, setExtensions] = useState([]);
   const extensionsEnabled = extensions.filter((e) => e.enabled);
   const extensionsDisabled = extensions.filter((e) => !e.enabled);
@@ -27,13 +28,24 @@ const App = () => {
     };
   };
 
-  const Items = ({ extensions }) => (
-    <>
-      {extensions.map((e) => (
+  const Items = ({ extensions }) => {
+    let items;
+    if (searchWords.length < 1) {
+      items = extensions.map((e) => (
         <Item extension={e} onClick={handleClick(e)} />
-      ))}
-    </>
-  );
+      ));
+    } else {
+      items = extensions
+        .filter(
+          (e) =>
+            e.name.toLowerCase().includes(searchWords) ||
+            e.description.toLowerCase().includes(searchWords)
+        )
+        .map((e) => <Item extension={e} onClick={handleClick(e)} />);
+    }
+
+    return <>{items}</>;
+  };
 
   useEffect(() => {
     refresh();
@@ -42,7 +54,12 @@ const App = () => {
   return (
     <div>
       <section className="section">
-        <input type="text" placeholder="Search" className="search" />
+        <input
+          type="text"
+          placeholder="Search"
+          className="search"
+          onChange={(e) => setSearchWords(e.target.value.toLocaleLowerCase())}
+        />
       </section>
 
       <section className="section">
