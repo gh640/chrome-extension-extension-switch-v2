@@ -2,13 +2,13 @@
  * Get extentions.
  */
 export async function getExtensions() {
-  const excluded_ids = await getExcludedExtensionIds();
+  const excludedIds = await getExcludedExtensionIds();
 
-  return (await getAllExtensions()).filter(is_target);
+  return (await getAllExtensions()).filter(isTarget);
 
   // Check if the app is a target.
-  function is_target(app) {
-    return !excluded_ids.includes(app.id);
+  function isTarget(app) {
+    return !excludedIds.includes(app.id);
   }
 }
 
@@ -16,17 +16,17 @@ export async function getExtensions() {
  * Get all extensions.
  */
 export async function getAllExtensions() {
-  const own_id = chrome.runtime.id;
+  const id = chrome.runtime.id;
 
-  return (await getApps()).filter(is_target).sort(compare_name);
+  return (await getApps()).filter(isTarget).sort(compareName);
 
   // Check if the app is a target.
-  function is_target(app) {
-    return app.type === "extension" && app.id !== own_id;
+  function isTarget(app) {
+    return app.type === "extension" && app.id !== id;
   }
 
   // Comparator which uses `.name` property.
-  function compare_name(e1, e2) {
+  function compareName(e1, e2) {
     if (e1.name < e2.name) {
       return -1;
     } else if (e1.name > e2.name) {
