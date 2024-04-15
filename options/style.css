@@ -21,8 +21,15 @@ body {
   font-size: 120%;
 }
 
+.extensions {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 1px;
+}
+
 .extension {
-  margin: 1px 0;
   padding: 6px 0;
 
   display: flex;

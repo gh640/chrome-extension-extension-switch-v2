@@ -37,6 +37,7 @@ body {
   margin-block-end: 0;
   padding: 0.5em 0;
   font-size: inherit;
+  color: var(--color-text-base);
 }
 
 .extensions {
@@ -73,13 +74,15 @@ body {
   cursor: pointer;
 }
 
-.extensions-enabled .extension;
+.extensions-enabled .extension,
 .extensions-disabled .extension:hover {
   filter: none;
 }
 
-.extensions-enabled.extension: hover;
-.extension .extensions-disabled .extension;
+.extensions-enabled .extension:hover,
+.extensions-disabled .extension {
+  filter: opacity(70%);
+}
 
 .extension-image {
   width: 14px;
