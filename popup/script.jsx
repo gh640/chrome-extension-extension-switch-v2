@@ -47,14 +47,14 @@ const App = () => {
 
       <section className="section">
         <h1 className="heading">Enabled</h1>
-        <div className="extensions extensions-enabled">
+        <div className="extensions-enabled">
           <Items extensions={extensionsEnabled} />
         </div>
       </section>
 
       <section className="section">
         <h1 className="heading">Disabled</h1>
-        <div className="extensions extensions-disabled">
+        <div className="extensions-disabled">
           <Items extensions={extensionsDisabled} />
         </div>
       </section>

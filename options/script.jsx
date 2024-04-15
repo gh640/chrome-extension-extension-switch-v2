@@ -38,7 +38,7 @@ const App = () => {
       <div class="description">
         Extensions checked here are excluded from the list of switches.
       </div>
-      <div className="extensions">
+      <div>
         {extensions.map((e) => (
           <Item
             extension={e}
