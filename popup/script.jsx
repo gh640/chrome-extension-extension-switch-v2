@@ -94,7 +94,7 @@ const Item = ({ extension, onClick }) => {
           className="extension-image"
         />
       ) : null}
-      <span>{name}</span>
+      <span className="extension-name">{name}</span>
     </button>
   );
 };
