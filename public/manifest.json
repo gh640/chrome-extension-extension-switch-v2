@@ -3,7 +3,7 @@
   "name": "Extension Switch",
   "short_name": "Extension Switch",
   "description": "Provides a switch to toggle statuses of installed extensions.",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "icons": {
     "19": "images/icon19.png",
     "32": "images/icon32.png",
