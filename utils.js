@@ -118,9 +118,12 @@ export async function switchExcludedStatus(id, excludedIds) {
 export function getIconUrl(extension) {
   const icons = extension.icons;
 
-  if (icons.length > 0) {
-    let [icon] = [...icons].reverse();
-    return icon.url;
+  // `icons` can be undefined and should be checked.
+  if (Array.isArray(icons)) {
+    if (icons.length > 0) {
+      let [icon] = [...icons].reverse();
+      return icon.url;
+    }
   }
 
   return null;
